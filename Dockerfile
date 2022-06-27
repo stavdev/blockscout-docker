@@ -24,7 +24,7 @@ ENV SECRET_KEY_BASE="VTIB3uHDNbvrY0+60ZWgUoUBKDn9ppLR8MI4CpRz4/qLyEFs54ktJfaNT6Z
     # ETHEREUM_JSONRPC_HTTP_URL="http://localhost:8545" \
     # ETHEREUM_JSONRPC_WS_URL="http://localhost:8546" \
     COIN="TMY" \
-    DATABASE_URL="postgresql://blockscout:blockscout@postgres:5432/blockscout" \
+    DATABASE_URL="postgresql://blockscout:blockscout@postgres:5433/blockscout" \
     PORT=4000
 
 RUN mix local.hex --force \
