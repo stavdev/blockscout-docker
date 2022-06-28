@@ -17,8 +17,8 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 RUN apt-get install postgresql postgresql-contrib -y
 
 # Build blockscout
-# RUN git clone https://github.com/stavdev/blockscout.git
-COPY ./blockscout /blockscout
+RUN git clone https://github.com/stavdev/blockscout.git
+# COPY ./blockscout /blockscout
 
 WORKDIR /blockscout
 
