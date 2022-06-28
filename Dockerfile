@@ -19,9 +19,9 @@ RUN apt-get install postgresql postgresql-contrib -y
 # Build blockscout
 #MARK: Replace on locale blockscout
 # RUN git clone https://github.com/blockscout/blockscout 
-COPY blockscout /blockscout
+COPY . .
 
-WORKDIR /blockscout
+WORKDIR blockscout
 
 ENV SECRET_KEY_BASE="VTIB3uHDNbvrY0+60ZWgUoUBKDn9ppLR8MI4CpRz4/qLyEFs54ktJfaNT6Z221No" \
     MIX_ENV="prod" \
