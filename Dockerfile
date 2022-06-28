@@ -19,7 +19,7 @@ RUN apt-get install postgresql postgresql-contrib -y
 # Build blockscout
 #MARK: Replace on locale blockscout
 # RUN git clone https://github.com/blockscout/blockscout 
-COPY . .
+COPY blockscout /blockscout
 
 WORKDIR /blockscout
 
