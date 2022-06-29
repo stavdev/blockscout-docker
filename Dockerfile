@@ -43,5 +43,5 @@ RUN mix phx.digest
 RUN cd apps/block_scout_web && mix phx.gen.cert blockscout blockscout.local
 
 EXPOSE 4000
-
-CMD [ "mix", "do", "ecto.create", "ecto.migrate", "phx.server"]
+mix do ecto.drop, ecto.create, ecto.migrate
+CMD [ "mix","do", "ecto.drop", "ecto.create", "ecto.migrate", "phx.server"]
