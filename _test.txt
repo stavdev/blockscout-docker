@@ -1,5 +1,7 @@
 FROM elixir:latest
 
+RUN echo $DATABASE_URL
+
 # Update repositories
 RUN apt-get update
 
@@ -14,10 +16,6 @@ RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 
 # Postgres
-RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
-RUN apt-get update \
-    && apt-get install postgresql-client-12 -y
-
 # RUN apt-get install postgresql postgresql-contrib -y
 
 # Build blockscout
@@ -25,15 +23,21 @@ RUN git clone https://github.com/stavdev/blockscout.git
 
 WORKDIR /blockscout
 
+RUN echo "blockscout compile"
+
 RUN mix local.hex --force \
     && mix do deps.get, local.rebar --force, deps.compile, compile
+
+RUN echo "Install npm dependancies and compile frontend assets​"
 
 # Install npm dependancies and compile frontend assets​
 RUN cd apps/block_scout_web/assets && npm install && node_modules/webpack/bin/webpack.js --mode production
 
+RUN echo "Build static assets​​"
 # Build static assets​
 RUN mix phx.digest
 
+RUN echo "Generate self-signed certificates​​​"
 # Generate self-signed certificates​
 RUN cd apps/block_scout_web && mix phx.gen.cert blockscout blockscout.local
 
