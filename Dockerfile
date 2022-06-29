@@ -1,7 +1,7 @@
 FROM elixir:latest
 
-ENV MIX_ENV="prod"
-    SECRET_KEY_BASE="VTIB3uHDNbvrY0+60ZWgUoUBKDn9ppLR8MI4CpRz4/qLyEFs54ktJfaNT6Z221No"
+ENV MIX_ENV="prod" \
+    SECRET_KEY_BASE="VTIB3uHDNbvrY0+60ZWgUoUBKDn9ppLR8MI4CpRz4/qLyEFs54ktJfaNT6Z221No" \
     DATABASE_URL=postgresql://postgres:postgres@postgres:5433/postgres?ssl=false
 # Update repositories
 RUN apt-get update
